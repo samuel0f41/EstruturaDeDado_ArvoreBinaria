@@ -1,7 +1,7 @@
 import java.util.NoSuchElementException;
 import java.io.FileReader;
 import java.io.BufferedReader;
-import  java.io.IOException;
+import java.io.IOException;
 import java.util.StringTokenizer;
 
 public class BSTree <Key extends Comparable<Key>, Value>{
@@ -45,9 +45,9 @@ public class BSTree <Key extends Comparable<Key>, Value>{
     public void revorder(Node x)
     {
         if(x == null) return;
-        revorder(x.left);
-        System.out.println(x.key+" "+x.val);
         revorder(x.right);
+        System.out.println(x.key+" "+x.val);
+        revorder(x.left);
     }
     public void preorder()
     {
