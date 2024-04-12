@@ -150,7 +150,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
     private void delete(Node z, Key key){
         if (z == null) return;
 
-        int cmp = key.comparaTo(z.key);
+        int cmp = key.compareTo(z.key);
         if (cmp < 0) delete(z.left, key);
         else if (cmp > 0) delete(z.right. key);
         else{
@@ -214,14 +214,14 @@ public class BSTree <Key extends Comparable<Key>, Value>{
         try{
             FileReader in1 = new FileReader (args[0]);
             BufferedReader br = new BufferedReader(in1);
-            n = Integer.parseInt(br.realLine());
+            n = Integer.parseInt(br.readLine());
 
             for(int j=0; j < n; j++){
                 tmp = br.readLine();
                 st = new StringTokenizer(tmp);
 
                 city = new Cidade(st.nextToken(),Integer.parseInt(st.nextToken()));
-                mytree.put(city.get_nome, city);
+                myTree.put(city.get_nome(), city);
             }
             br.close();
             in1.close();
@@ -238,7 +238,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
                 // String nome = st.nextToken();
 
                 // pos = rank(new Cidade(tmp, 0), whiteList);
-                city = mytgit commit -m "first commit" ree.get(tmp);
+                city = myTree.get(tmp);
                 if(city == null) System.out.print("\n[Failed] "+tmp+" não foi encontrada.");
                 else{
                     System.out.print("\n[ok]\t "+city.get_nome()+ " foi encontrado. Temperatura lá é "+city.get_temp()+" F");
