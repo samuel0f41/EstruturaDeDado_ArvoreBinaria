@@ -29,46 +29,39 @@ public class BSTree <Key extends Comparable<Key>, Value>{
         inorder(root);
     }
 
-    private void inorder(Node x)
-    {
-        if(x == null) return;
+    private void inorder(Node x) {
+        if(x != null) return;
         inorder(x.left);
         System.out.println(x.key+" "+x.val);
         inorder(x.right);
     }
 
-    public void revorder()
-    {
+    public void revorder() {
         revorder(root);
     }
 
-    public void revorder(Node x)
-    {
+    public void revorder(Node x) {
         if(x == null) return;
         revorder(x.right);
         System.out.println(x.key+" "+x.val);
         revorder(x.left);
     }
-    public void preorder()
-    {
+    public void preorder() {
         preorder(root);
     }
 
-    public void preorder(Node x)
-    {
+    public void preorder(Node x) {
         if(x == null) return;
         System.out.println(x.key+" "+x.val);
         preorder(x.left);
         preorder(x.right);
     }
 
-    public void posorder()
-    {
+    public void posorder() {
         posorder(root);
     }
 
-    public void posorder(Node x)
-    {
+    public void posorder(Node x) {
         if(x == null) return;
         posorder(x.left);
         posorder(x.right);
@@ -125,8 +118,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
             else y.right = z;
         }
     }
-    private void transplant (Node u, Node v)
-    {
+    private void transplant (Node u, Node v) {
         if(u.father == null){
             root = v;
         }
@@ -143,7 +135,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
     }
 
     public void delete(Key key){
-        if(key == null) throw new NullPointerException("argument to delete() is null");
+        if (key == null) throw new NullPointerException("argument to delete() is null");
         delete(root, key);
     }
 
@@ -151,7 +143,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
         if (z == null) return;
 
         int cmp = key.compareTo(z.key);
-        if (cmp < 0) delete(z.left, key);
+        if      (cmp < 0) delete(z.left, key);
         else if (cmp > 0) delete(z.right. key);
         else{
             if(z.left == null){
@@ -176,7 +168,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
         }
     }
 
-    public Key min(){
+    public Key min() {
         if(isEmpty()) throw new NoSuchElementException("called min() with empty symbol table");
         return min(root).key;
     }
@@ -190,16 +182,16 @@ public class BSTree <Key extends Comparable<Key>, Value>{
     }
     private Node max(Node x){
         if(x.right == null) return x;
-        else               return max(x.right);
+        else                return max(x.right);
     }
 
     /**
      *  Unit tests the <tt>BST</tt> data type.
      */
-    public static void main(String [] args){
+    public static void main(String [] args) {
 
         if(args.length < 2){
-            System.out.println("\n\nUso: BSTree arquivo1 arquivo2\n\n");
+            System.out.println("\n\nUso: java BSTree arquivo1 arquivo2\n\n");
             System.exit(0);
         }
         int n;
@@ -207,7 +199,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
         String tmp;
         StringTokenizer st;
 
-        BSTree<String, Cidade> myTree = new BSTree<String, Cidade>();
+        BSTree<String, Cidade> mytree = new BSTree<String, Cidade>();
         Cidade city;
 
 
@@ -221,7 +213,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
                 st = new StringTokenizer(tmp);
 
                 city = new Cidade(st.nextToken(),Integer.parseInt(st.nextToken()));
-                myTree.put(city.get_nome(), city);
+                mytree.put(city.get_nome(), city);
             }
             br.close();
             in1.close();
@@ -233,12 +225,11 @@ public class BSTree <Key extends Comparable<Key>, Value>{
 
             for(int j=0; j < n; j++){
                 tmp = br.readLine();
-
                 // st = new StringTokenizer(tmp);
                 // String nome = st.nextToken();
 
                 // pos = rank(new Cidade(tmp, 0), whiteList);
-                city = myTree.get(tmp);
+                city = mytree.get(tmp);
                 if(city == null) System.out.print("\n[Failed] "+tmp+" não foi encontrada.");
                 else{
                     System.out.print("\n[ok]\t "+city.get_nome()+ " foi encontrado. Temperatura lá é "+city.get_temp()+" F");
@@ -248,7 +239,7 @@ public class BSTree <Key extends Comparable<Key>, Value>{
             in1.close();
 
             System.out.println("\n");
-            myTree.inorder();
+            mytree.inorder();
 
         }catch (IOException e){
 
